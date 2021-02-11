@@ -26,23 +26,24 @@ Folder Structure
 ```
 app
 ├── config
-│   └── routes.js
-├── screens
-│   └── App
-│       ├── screens
-│       │   ├── Admin
-│       │   │   ├── screens
-│       │   │   │   ├── Reports
-│       │   │   │   │   └── index.js
-│       │   │   │   └── Users
-│       │   │   │       └── index.js
-│       │   │   └── index.js
-│       │   └── Course
-│       │       ├── screens
-│       │       │   └── Assignments
-│       │       │       └── index.js
-│       │       └── index.js
+│   └── config.js
+├── entity (Mongoose Collection)
+│   └── index.js
+│   └── post_comments.js
+│   └── posts.js
+│   └── profile_types.js
+│   └── users.js
+├── services 
+│   └── blog
 │       └── index.js
-└── index.js
+│       └── controller.js
+│       └── modal.js
+│   └── routes
+│       └── index.js
+│   └── util
+│       └── db.js
+│       └── util.js
+├── package.json
+└── server.js
 ```
 
