@@ -222,22 +222,13 @@ module.exports = [
       auth: "auth",
       validate: {
         payload: joi.object({
-          postId: joi
-            .string()
-            .required()
-            .error(new Error("postId required")),
-          title: joi
-            .string()
-            .required()
-            .error(new Error("title required")),
+          postId: joi.string().required().error(new Error("postId required")),
+          title: joi.string().required().error(new Error("title required")),
           description: joi
             .string()
             .required()
             .error(new Error("description required")),
-          image: joi
-            .string()
-            .optional()
-            .error(new Error("image required")),
+          image: joi.string().optional().error(new Error("image required")),
         }),
         failAction: (request, h, error) => {
           return Util.response(h, 1, error.output.payload.message, 400);

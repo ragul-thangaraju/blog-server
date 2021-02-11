@@ -8,7 +8,10 @@ var ObjectId = require("mongodb").ObjectId;
  * @param {string} params
  */
 const isUsernameAlreadyPresent = async (params) => {
-  return Entity.Users.findOne({ username: params.username, profile_type_name: "USER" })
+  return Entity.Users.findOne({
+    username: params.username,
+    profile_type_name: "USER",
+  })
     .then((response) => {
       if (!response) {
         return false;
@@ -57,7 +60,10 @@ const userRegister = async (params) => {
  * @param {string} params
  */
 const userLogin = async (params) => {
-  return Entity.Users.findOne({ username: params.username, profile_type_name: "USER" })
+  return Entity.Users.findOne({
+    username: params.username,
+    profile_type_name: "USER",
+  })
     .then(async (resp) => {
       if (!resp) {
         return new Error("No username found");
@@ -391,22 +397,22 @@ const getLatestcomments = async () => {
  * @param {string} params
  */
 const editPost = async (params) => {
-
   let setCondition = {};
   if (params.image) {
     setCondition = {
-      $set: { title: params.title, description: params.description, image: params.image }
+      $set: {
+        title: params.title,
+        description: params.description,
+        image: params.image,
+      },
     };
   } else {
     setCondition = {
-      $set: { title: params.title, description: params.description }
+      $set: { title: params.title, description: params.description },
     };
   }
-  
-  return Entity.Posts.updateOne(
-    { _id: params.postId },
-    setCondition 
-  )
+
+  return Entity.Posts.updateOne({ _id: params.postId }, setCondition)
     .then(async (response) => {
       if (!response) {
         return false;
